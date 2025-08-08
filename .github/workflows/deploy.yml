@@ -24,8 +24,8 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build Web (CanvasKit + PWA)
-        run: flutter build web --release --web-renderer canvaskit --pwa-strategy=offline-first
+      - name: Build Web (PWA)
+        run: flutter build web --release --pwa-strategy=offline-first
 
       - name: Deploy to Vercel (Preview)
         if: github.event_name == 'pull_request'
@@ -49,4 +49,3 @@ jobs:
           vercel-args: '--prod'
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-
